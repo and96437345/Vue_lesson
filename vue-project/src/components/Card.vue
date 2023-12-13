@@ -1,19 +1,20 @@
 <script setup>
-export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
-  methods: {
-    inc() {
-      this.count++
-    }
-  }
-}
-import { Ref } from 'vue'
+// export default {
+//   data() {
+//     return {
+//       count: 0
+//     }
+//   },
+//   methods: {
+//     incriment() {
+//       this.count++
+//     }
+//   }
+// }
+import { ref } from 'vue'
+
 let count = ref(0)
-function inc() {
+function incriment() {
   count.value++
 }
 
@@ -26,15 +27,19 @@ defineProps({
 
 <template>
   <div class="card">
-    <svg>
-      <use></use>
-    </svg>
     <div class="card__title">{{ title }}</div>
-    <div class="card__price">{{ price }}</div>
+    <div class="card__price">{{ price }} руб.</div>
+    {{ isAdded }}
+    <slot></slot>
     <!-- <h2>{{ count }}</h2>
-    <button @click="inc()">Добавить 1</button>
-    <input v-modal="count" /> -->
+    <button @click="incriment()">Добавить 1</button>
+    <input v-model="count" /> -->
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.card__title {
+  font-size: 100px;
+  color: aqua;
+}
+</style>
